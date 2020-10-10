@@ -9,6 +9,9 @@ import { GridUserComponent } from './grid-user/grid-user.component';
 import { AddOrUpdateUserComponent } from './add-or-update-user/add-or-update-user.component';
 import { RouterModule, Routes } from '@angular/router';
 
+import { UserService } from './user.service';
+import { HttpClientModule } from '@angular/common/http';
+
 import { DecimalPipe } from '@angular/common';
 import { DatePipe } from '@angular/common';
 
@@ -27,8 +30,9 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     MatSliderModule,
     RouterModule.forRoot(appRoutes),
+    HttpClientModule
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

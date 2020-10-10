@@ -4,14 +4,17 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable()
 export class UserService {
   private headers: HttpHeaders;
-  private accessPointUrl: string = 'http://localhost:53877/api/users';
+  private accessPointUrl: string = 'http://localhost:55418/api/Users';
 
   constructor(private http: HttpClient) {
-    this.headers = new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'});
+    this.headers = new HttpHeaders({
+      'Access-Control-Allow-Headers': 'Content-Type',
+      'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE',
+      'Content-Type': 'application/json; charset=utf-8',
+      'Access-Control-Allow-Origin':'http://127.0.0.1:*'});
   }
 
   public get() {
-    // Get all jogging data
     return this.http.get(this.accessPointUrl, {headers: this.headers});
   }
 

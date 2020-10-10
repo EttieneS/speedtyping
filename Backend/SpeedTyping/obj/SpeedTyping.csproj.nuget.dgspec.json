@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Danko Spark\\SpeedTyping\\SpeedTyping\\SpeedTyping.csproj": {}
+    "C:\\Danko Spark\\SpeedTyping\\Backend\\SpeedTyping\\SpeedTyping.csproj": {}
   },
   "projects": {
-    "C:\\Danko Spark\\SpeedTyping\\SpeedTyping\\SpeedTyping.csproj": {
+    "C:\\Danko Spark\\SpeedTyping\\Backend\\SpeedTyping\\SpeedTyping.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Danko Spark\\SpeedTyping\\SpeedTyping\\SpeedTyping.csproj",
+        "projectUniqueName": "C:\\Danko Spark\\SpeedTyping\\Backend\\SpeedTyping\\SpeedTyping.csproj",
         "projectName": "SpeedTyping",
-        "projectPath": "C:\\Danko Spark\\SpeedTyping\\SpeedTyping\\SpeedTyping.csproj",
+        "projectPath": "C:\\Danko Spark\\SpeedTyping\\Backend\\SpeedTyping\\SpeedTyping.csproj",
         "packagesPath": "C:\\Users\\smith\\.nuget\\packages\\",
-        "outputPath": "C:\\Danko Spark\\SpeedTyping\\SpeedTyping\\obj\\",
+        "outputPath": "C:\\Danko Spark\\SpeedTyping\\Backend\\SpeedTyping\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -41,6 +41,10 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "Microsoft.AspNetCore.Cors": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[3.1.8, )"

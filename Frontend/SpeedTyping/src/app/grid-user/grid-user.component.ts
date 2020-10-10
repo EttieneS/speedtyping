@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-grid-user',
@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./grid-user.component.css']
 })
 export class GridUserComponent implements OnInit {
-
+  @Input() userData: Array<any>;
+  
   constructor() { }
 
   ngOnInit(): void {
