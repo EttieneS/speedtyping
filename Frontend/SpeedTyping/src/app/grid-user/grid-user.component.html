@@ -1,1 +1,19 @@
-<p>grid-user works!</p>
+<a href="#" id="new-button">New</a>
+<table>
+<thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+    </tr>
+</thead>
+<tbody>
+    <tr *ngFor="let joggingInfo of joggingData">
+        <td>{{ userInfo.id }}</td>
+        <td>{{ userInfo.name }}</td>
+        <td>
+            <a href="#" (click)="editRecord(this)">Edit</a>
+            <a href="#" (click)="deleteRecord(this)">Delete</a>
+        </td>
+    </tr>
+</tbody>
+</table>

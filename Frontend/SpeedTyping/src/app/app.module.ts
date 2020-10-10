@@ -9,6 +9,9 @@ import { GridUserComponent } from './grid-user/grid-user.component';
 import { AddOrUpdateUserComponent } from './add-or-update-user/add-or-update-user.component';
 import { RouterModule, Routes } from '@angular/router';
 
+import { DecimalPipe } from '@angular/common';
+import { DatePipe } from '@angular/common';
+
 const appRoutes: Routes = [
   { path: '', component: HomeComponent }
 ]
