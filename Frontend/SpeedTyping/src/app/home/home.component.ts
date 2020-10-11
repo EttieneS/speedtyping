@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-home',

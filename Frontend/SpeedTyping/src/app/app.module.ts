@@ -15,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { DecimalPipe } from '@angular/common';
 import { DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import * as _ from 'lodash';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent }
