@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { DecimalPipe } from '@angular/common';
 import { DatePipe } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent }
@@ -30,7 +31,8 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     MatSliderModule,
     RouterModule.forRoot(appRoutes),
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]
