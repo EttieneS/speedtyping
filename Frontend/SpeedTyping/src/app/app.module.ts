@@ -18,7 +18,8 @@ import { FormsModule } from '@angular/forms';
 import * as _ from 'lodash';
 
 const appRoutes: Routes = [
-  { path: '', component: HomeComponent }
+  { path: '', component: HomeComponent },
+  { path: 'users/add', component: AddOrUpdateUserComponent }
 ]
 @NgModule({
   declarations: [

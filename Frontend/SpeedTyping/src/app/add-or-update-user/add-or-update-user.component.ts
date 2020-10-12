@@ -13,8 +13,7 @@ export class AddOrUpdateUserComponent implements OnInit {
   public buttonText = 'Save';
 
   constructor() {
-    this.clearUserInfo();
-    console.log(this.userInfo.name);
+    //this.clearUserInfo();
   }
 
   ngOnInit(): void {

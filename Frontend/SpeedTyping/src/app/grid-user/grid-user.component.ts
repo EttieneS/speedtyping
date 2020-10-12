@@ -9,6 +9,7 @@ export class GridUserComponent implements OnInit {
   @Output() recordDeleted = new EventEmitter<any>();
   @Output() newClicked = new EventEmitter<any>();
   @Output() editClicked = new EventEmitter<any>();
+  @Output() recordEliminated = new EventEmitter<any>();
   @Input() userData: Array<any>;
 
   public deleteRecord(record) {
@@ -22,6 +23,11 @@ export class GridUserComponent implements OnInit {
 
   public newRecord() {
     this.newClicked.emit();
+  }
+
+  public eliminateRecord(record) {
+    console.log("eliminateRecord");
+    this.recordEliminated.emit(record);
   }
 
   constructor() { }
