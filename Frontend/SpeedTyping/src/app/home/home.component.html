@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-4">
-      <app-add-or-update-user (userCreated)="createOrUpdateUser($event)" [joggingInfo]="currentUser"></app-add-or-update-user>
+      <app-add-or-update-user (userCreated)="createOrUpdateUser($event)" [userInfo]="currentUser"></app-add-or-update-user>
   </div>
   <div class="col-md-8">
       <app-grid-user [userData]="userData" (editClicked)="editClicked($event)" (newClicked)="editClicked($event)" (recordDeleted)="deleteClicked($event)"></app-grid-user>

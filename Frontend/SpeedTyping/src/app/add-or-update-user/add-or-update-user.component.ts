@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Input, Output, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-add-or-update-user',
@@ -7,20 +7,20 @@ import { Component, OnInit, EventEmitter, Input, Output, OnInit } from '@angular
 })
 
 export class AddOrUpdateUserComponent implements OnInit {
-  @Output() userCreated = new EventEmmitter<any>();
+  @Output() userCreated = new EventEmitter<any>();
   @Input() userInfo: any;
 
   public buttonText = 'Save';
 
   constructor() {
     this.clearUserInfo();
-    console.log(this.joggingInfo.date);
+    console.log(this.userInfo.name);
   }
 
   ngOnInit(): void {
   }
 
-  private clearUserInfo = function()){
+  private clearUserInfo = function() {
     this.userInfo = {
       id: undefined,
       name: '',

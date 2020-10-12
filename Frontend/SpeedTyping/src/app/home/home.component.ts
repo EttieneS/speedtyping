@@ -29,13 +29,14 @@ export class HomeComponent implements OnInit {
   };
 
   public newClicked = function() {
+
     this.currentUser = this.setInitialValuesForJoggingData();
   };
 
   public deleteClicked(record) {
-    const deleteIndex = _.findIndex(this.joggingData, {id: record.id});
+    const deleteIndex = _.findIndex(this.userData, {id: record.id});
     this.userService.remove(record).subscribe(
-      result => this.joggingData.splice(deleteIndex, 1)
+      result => this.userData.splice(deleteIndex, 1)
     );
   }
 

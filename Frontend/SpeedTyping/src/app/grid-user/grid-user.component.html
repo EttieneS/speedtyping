@@ -15,8 +15,8 @@
         <td>{{ userInfo.score }}</td>
         <td>{{ userInfo.competition }}</td>
         <td>
-            <a href="#" (click)="editRecord(this)">Edit</a>
-            <a href="#" (click)="deleteRecord(this)">Delete</a>
+            <a href="#" (click)="editRecord(this.userInfo)">Edit</a>
+            <a href="#" (click)="deleteRecord(this.userInfo)">Delete</a>
         </td>
     </tr>
 </tbody>

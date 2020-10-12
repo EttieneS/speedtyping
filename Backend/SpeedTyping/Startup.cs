@@ -35,7 +35,8 @@ namespace SpeedTyping
                 options.AddPolicy("CorsPolicy", builder =>
                         builder.AllowAnyOrigin()
                         .AllowAnyMethod()
-                        .AllowAnyHeader());                      
+                        .AllowAnyHeader()
+                        .WithOrigins("http://localhost:4200"));                      
             });
 
             services.AddControllers();
