@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "7/a6kC740JK3Lgd9GNr4ahFdLi8kf1jCpGGxJm3Ui8Yud/XDz+lEoF6ajFPqr5vKDWAl2Y6UGk+oCk5m6fd61A==",
+  "dgSpecHash": "8CG7qQsSPpapmnBetgyenRVw1vshcPF+0DpayKqcFgi25yKyPj8wvopZNhAUzCSOV0QWc3gDIj0m7TV21V36Yg==",
   "success": true,
-  "projectFilePath": "C:\\Danko Spark\\SpeedTyping\\SpeedTyping\\SpeedTyping.csproj",
+  "projectFilePath": "C:\\Danko Spark\\SpeedTyping\\Backend\\SpeedTyping\\SpeedTyping.csproj",
   "expectedPackageFiles": [
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.aspnetcore.razor\\2.2.0\\microsoft.aspnetcore.razor.2.2.0.nupkg.sha512",
