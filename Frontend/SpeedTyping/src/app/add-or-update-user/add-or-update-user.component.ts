@@ -24,7 +24,14 @@ export class AddOrUpdateUserComponent implements OnInit {
     this.userInfo = {
       id: undefined,
       name: '',
+      score: 0,
+      competition: false
     };
+  };
+
+  public addOrUpdateUserRecord = function(event) {
+    this.userCreated.emit(this.userInfo);
+    this.clearUserInfo();
   };
 
 }

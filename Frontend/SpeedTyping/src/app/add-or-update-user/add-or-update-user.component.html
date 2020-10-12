@@ -1,5 +1,6 @@
 <div>
-  <h2>Edit Player details.</h2>
+  <h2 *ngIf="!userInfo || userInfo.id === undefined">Add record</h2>
+  <h2 *ngIf="userInfo && userInfo.id !== undefined">Update record (ID: )</h2>
   <form>
     <div class="form-group">
         <label for="name-input">Player Name:</label>

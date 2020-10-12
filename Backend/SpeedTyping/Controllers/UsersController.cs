@@ -85,7 +85,10 @@ namespace SpeedTyping.Controllers
             _context.User.Add(user);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetUser", new { id = user.Id }, user);
+            return CreatedAtAction("GetUser", new { 
+                id = user.Id, 
+                score = user.Score, 
+                competition = user.Competition }, user);
         }
 
         // DELETE: api/Users/5

@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SpeedTyping.Data;
 
 namespace SpeedTyping.Migrations
 {
     [DbContext(typeof(SpeedTypingContext))]
-    partial class SpeedTypingContextModelSnapshot : ModelSnapshot
+    [Migration("20201011142615_bonobo")]
+    partial class bonobo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

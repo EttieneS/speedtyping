@@ -24,11 +24,24 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  public editClicked = function(record) {
+    this.currentUser = record;
+  };
+
+  public newClicked = function() {
+    this.currentUser = this.setInitialValuesForJoggingData();
+  };
+
+  public deleteClicked(record) {
+    const deleteIndex = _.findIndex(this.joggingData, {id: record.id});
+    this.userService.remove(record).subscribe(
+      result => this.joggingData.splice(deleteIndex, 1)
+    );
+  }
+
   public createOrUpdateUser = function(user: any) {
-    // if jogging is present in joggingData, we can assume this is an update
-    // otherwise it is adding a new element
     let userWithId;
-    usserWithId = _.find(this.userData, (el => el.id === user.id));
+    userWithId = _.find(this.userData, (el => el.id === user.id));
 
     if (userWithId) {
       const updateIndex = _.findIndex(this.userData, {id: userWithId.id});

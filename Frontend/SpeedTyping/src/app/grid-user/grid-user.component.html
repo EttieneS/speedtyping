@@ -4,12 +4,16 @@
     <tr>
         <th>ID</th>
         <th>Name</th>
+        <th>Score</th>
+        <th>In Competition</th>
     </tr>
 </thead>
 <tbody>
     <tr *ngFor="let userInfo of userData">
         <td>{{ userInfo.id }}</td>
         <td>{{ userInfo.name }}</td>
+        <td>{{ userInfo.score }}</td>
+        <td>{{ userInfo.competition }}</td>
         <td>
             <a href="#" (click)="editRecord(this)">Edit</a>
             <a href="#" (click)="deleteRecord(this)">Delete</a>
