@@ -29,6 +29,7 @@ export class HomeComponent implements OnInit {
   };
 
   public newClicked = function() {
+
     this.currentUser = this.setInitialValuesForJoggingData();
   };
 
@@ -58,59 +59,56 @@ export class HomeComponent implements OnInit {
   };
 
   public eliminateClicked(record) {
-    var defendentId = record.id;
-    var leastDiff = 500;
+    var arrayLength = this.userData.length;
+    var scoreDiff = 500;
     var competitor = {};
 
-    for(var i = 0; i < this.userData.length; i++){
-      if (!(this.userData[i].id == defendentId)){
+    for (var i = 0; i < arrayLength; i++){
+      if (!(this.userData[i].id == record['id'])){
+        var competitorDiff = difference(record.score, this.userData[i].score);
 
-        var diff = difference(record.score, this.userData[i].score);
-        if (leastDiff > diff){
-          leastDiff = diff;
-          competitor = this.userData[i];
+        if (scoreDiff > competitorDiff){
+          scoreDiff = competitorDiff;
+          var competitor = this.userData[i];
         }
       }
     }
 
-    var loser = getLoser(record, competitor);
-    console.log("the loser is: " + loser.name);
-    var updatedRecord = createLoser(loser);
+    var theLoser = loser(record, competitor);
+    var loser = updateLoser(theLoser);
 
-    function difference(x, y){
-      var diff = x - y;
-      return Math.abs(diff);
-    }
+    const updateIndex = _.findIndex(loser, {id: loser['id']});
+    this.userService.update(loser).subscribe(
+      userRecord =>  this.userData.splice(updateIndex, 1, loser)
+    );
 
-    function getLoser(x, y){
-      var rnd = (Math.floor(Math.random() * 100) + 1);
-      if (rnd >= 50){
-        return x;
-      } else {
-        return y;
-      }
-    }
-
-    function createLoser(user){
-      var id = user.id;
-      //var name = user.name;
-
+    function updateLoser(record){
       var loser = {
-        id: id,
-        name: user.name,
-        score: user.score,
+        id: record['id'],
+        name: record['name'],
+        score: record['score'],
         competition: false
       }
 
       return loser;
     }
 
-    const updateIndex = _.findIndex(updatedRecord, {id: updatedRecord['id']});
-    console.log("The record to be updated: ", updatedRecord['name']);
+    function loser(a, b){
+      var bayes = (Math.random() * 101);
+      
+      if (bayes >= 50){
+        return a;
+      } else {
+        return b;
+      }
+    }
 
-    this.userService.update(updatedRecord).subscribe(
-      userRecord =>  this.userData.splice(updateIndex, 1, updatedRecord)
-    );
+    function difference(a , b){
+      var diff = a - b;
+      diff = Math.abs(diff);
+
+      return diff;
+    }
   }
 
   ngOnInit(): void {
