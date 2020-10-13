@@ -69,33 +69,33 @@ export class HomeComponent implements OnInit {
 
         if (scoreDiff > competitorDiff){
           scoreDiff = competitorDiff;
-          var competitor = this.userData[i];
+          competitor = this.userData[i];
         }
       }
     }
 
     var theLoser = loser(record, competitor);
-    var loser = updateLoser(theLoser);
+    var loserrecord = updateLoser(theLoser);
 
-    const updateIndex = _.findIndex(loser, {id: loser['id']});
-    this.userService.update(loser).subscribe(
-      userRecord =>  this.userData.splice(updateIndex, 1, loser)
+    const updateIndex = _.findIndex(loserrecord, {id: loserrecord['id']});
+    this.userService.update(loserrecord).subscribe(
+      userRecord =>  this.userData.splice(updateIndex, 1, loserrecord)
     );
 
     function updateLoser(record){
-      var loser = {
+      var updateRecord = {
         id: record['id'],
         name: record['name'],
         score: record['score'],
         competition: false
       }
 
-      return loser;
+      return updateRecord;
     }
 
     function loser(a, b){
       var bayes = (Math.random() * 101);
-      
+
       if (bayes >= 50){
         return a;
       } else {
