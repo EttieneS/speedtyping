@@ -16,6 +16,8 @@ import { DecimalPipe } from '@angular/common';
 import { DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import * as _ from 'lodash';
+import { QRCodeModule } from 'angularx-qrcode';
+import { NgxQRCodeModule } from 'ngx-qrcode2';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent }
@@ -33,7 +35,9 @@ const appRoutes: Routes = [
     //MatSliderModule,
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    QRCodeModule,
+    NgxQRCodeModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

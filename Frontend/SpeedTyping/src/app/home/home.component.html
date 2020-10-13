@@ -5,4 +5,8 @@
   <div class="col-md-8">
       <app-grid-user [userData]="userData" (editClicked)="editClicked($event)" (newClicked)="editClicked($event)" (recordDeleted)="deleteClicked($event)" (userEliminated)="eliminateClicked($event)"></app-grid-user>
   </div>
+  <div>
+    <qrcode id="qrcode" [qrdata]="myAngularxQrCode" [width]="256" [errorCorrectionLevel]="'M'" [elementType]="'svg'"></qrcode>
+    <a [href]="href" *ngIf="display" (click)="downloadImage()">Download QR Code</a>
+  </div>
 </div>
