@@ -22,12 +22,48 @@
           name="lastname"
         />
       </div>
-
-      <!-- <div class="form-group">
-        <label><strong>Status:</strong></label>
-        {{ currentTutorial.published ? "Published" : "Pending" }}
-      </div> -->
+      <div class="form-group">
+        <label for="cellnumber">Cellphone Number</label>
+        <input
+          type="text"
+          class="form-control"
+          id="cellnumber"
+          [(ngModel)]="currentUser.cellNumber"
+          name="cellnumber"
+        />
+      </div>
+      <div class="form-group">
+        <label for="idnumber">ID Number</label>
+        <input
+          type="text"
+          class="form-control"
+          id="idnumber"
+          [(ngModel)]="currentUser.idNumber"
+          name="idnumber"
+        />
+      </div>
+      <div class="form-group">
+        <label for="datecreated">Choose a date</label>
+        <input [(ngModel)]="currentUser.dateOfBirth" matInput [matDatepicker]="picker" id="user.dateOfBirth" name="user.dateOfBirth">
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-datepicker-toggle [for]="picker" ></mat-datepicker-toggle>
+      </div>
+      <div class="form-group">
+        <label for="competition-input">Player in competition:</label>
+        <select [(ngModel)]="currentUser.competition" name="competition-input">
+          <option [ngValue]="false">false</option>
+          <option [ngValue]="true">true</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label><strong>In competition:</strong></label>
+        {{ currentUser.competition ? true : false }}
+      </div>
     </form>
+    <div>
+      <qrcode id="qrcode" [qrdata]="myAngularxQrCode" [width]="256" [errorCorrectionLevel]="'M'" [elementType]="'svg'"></qrcode>
+      <a [href]="href" (click)="downloadImage()">Download QR Code</a>
+    </div>
 
     <!-- <button
       class="badge badge-primary mr-2"

@@ -89,9 +89,9 @@ namespace SpeedTyping.Controllers
                 id = user.Id, 
                 name = user.Name, 
                 lastname = user.LastName,
-                cellnumber = user.CellNumber,
-                score = user.Score, 
-                competition = user.Competition 
+                cellnumber = user.CellNumber //,
+                //score = user.Score, 
+                //competition = user.Competition 
                 }, user);
         }
 

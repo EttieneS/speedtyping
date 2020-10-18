@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { DateAdapter } from '@angular/material/core';
+import * as svg from 'save-svg-as-png';
 
 @Component({
   selector: 'app-user-details',
@@ -11,16 +13,21 @@ import { CommonModule } from '@angular/common';
 export class UserDetailsComponent implements OnInit {
   public currentUser = null;
   public message = '';
-
+  public myAngularxQrCode = {};
+  
   constructor(
     private userService: UserService,
     private route: ActivatedRoute,
-    private router: Router) { }
+    private router: Router,
+    private dateAdapter: DateAdapter<Date>) {
+      this.dateAdapter.setLocale('en-GB');
+    }
+
+
 
   ngOnInit(): void {
     this.message = '';
     this.getUser(this.route.snapshot.paramMap.get('id'));
-    console.log("paramID: " + this.route.snapshot.paramMap.get('id'));
   }
 
   getUser(id): void {
@@ -28,24 +35,8 @@ export class UserDetailsComponent implements OnInit {
       .subscribe(
         data => {
           this.currentUser = data;
-        },
-        error => {
-          console.log(error);
-        });
-  }
-
-  updatePublished(status): void {
-    const data = {
-      title: this.currentUser.title,
-      description: this.currentUser.description,
-      published: status
-    };
-
-    this.userService.update(this.currentUser.id, data)
-      .subscribe(
-        response => {
-          this.currentUser.competition = status;
-          console.log(response);
+          var qrcode = JSON.stringify(this.currentUser);
+          this.myAngularxQrCode = qrcode;
         },
         error => {
           console.log(error);
@@ -53,14 +44,6 @@ export class UserDetailsComponent implements OnInit {
   }
 
   updateUser(): void {
-    const user = {
-      id: this.currentUser.id,
-      name: this.currentUser.name,
-      lastName: this.currentUser.lastName
-    };
-
-    alert("currentUser in update: " + this.currentUser.lastName);
-
     this.userService.update(this.currentUser.id, this.currentUser)
       .subscribe(
         response => {
@@ -83,5 +66,14 @@ export class UserDetailsComponent implements OnInit {
           console.log(error);
         });
   }
+
+  public downloadImage(){
+    var options = {
+      height: 256,
+      width: 256
+    }
+
+    svg.saveSvgAsPng(document.getElementById("qrcode").firstChild.firstChild, "qrcode.png");
+  };
 
 }

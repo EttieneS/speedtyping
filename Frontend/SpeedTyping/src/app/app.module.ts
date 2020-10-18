@@ -3,7 +3,13 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+// import { MaterialModule } from '@angular/material';
 import { MatSliderModule } from '@angular/material/slider';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
+
 import { HomeComponent } from './home/home.component';
 import { GridUserComponent } from './grid-user/grid-user.component';
 import { AddOrUpdateUserComponent } from './add-or-update-user/add-or-update-user.component';
@@ -24,13 +30,14 @@ import { UserListComponent } from './components/user-list/user-list.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from "@angular/common";
 
+
 const routes: Routes = [
   { path: '', redirectTo: 'users', pathMatch: 'full' },
   { path: 'users', component: UserListComponent },
   { path: 'users/:id', component: UserDetailsComponent },
   { path: 'add', component: AddUserComponent }
 ];
-
+//Africa/Johannesburg
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,7 +58,11 @@ const routes: Routes = [
     QRCodeModule,
     NgxQRCodeModule,
     NgbModule,
-    CommonModule
+    CommonModule,
+    MatDatepickerModule,
+    MatButtonModule,
+    MatButtonToggleModule,
+    MatNativeDateModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

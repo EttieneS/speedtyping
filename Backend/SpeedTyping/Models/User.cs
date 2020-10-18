@@ -14,18 +14,19 @@ namespace SpeedTyping.Models
         public string Name { get; set; }
         public string LastName { get; set; }
         public DateTime DateCreated { get; set; }
-        public int IdNumber { get; set; }
-        public int CellNumber { get; set; }
+        public DateTime DateOfBirth { get; set; }
+        public string IdNumber { get; set; }
+        public string CellNumber { get; set; }
         public int Score { get; set; }
         public bool Competition { get; set; }
 
-        /*public User()
+        public User()
         {
-            this.DateCreated = DateTime.Now;
+            this.DateCreated = DateTime.Today;
 
             Random rnd = new Random();
             int rndRating = rnd.Next(0, 501);
             this.Score = rndRating;
-        }*/
+        }
     }
 }
