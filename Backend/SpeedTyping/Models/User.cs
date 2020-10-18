@@ -10,19 +10,22 @@ namespace SpeedTyping.Models
 {
     public class User
     {
-        [Key]
         public int Id { get; set; }
-        [Required]
-        [MaxLength(15, ErrorMessage ="Competitor name may be no longer than 15 characters")]
         public string Name { get; set; }
         public string LastName { get; set; }
-        [Timestamp]
         public DateTime DateCreated { get; set; }
-        [Required]
-        [MaxLength(13)]
         public int IdNumber { get; set; }
+        public int CellNumber { get; set; }
         public int Score { get; set; }
-        [DefaultValue(true)]
         public bool Competition { get; set; }
+
+        /*public User()
+        {
+            this.DateCreated = DateTime.Now;
+
+            Random rnd = new Random();
+            int rndRating = rnd.Next(0, 501);
+            this.Score = rndRating;
+        }*/
     }
 }

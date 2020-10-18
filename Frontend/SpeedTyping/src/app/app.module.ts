@@ -18,6 +18,9 @@ import { FormsModule } from '@angular/forms';
 import * as _ from 'lodash';
 import { QRCodeModule } from 'angularx-qrcode';
 import { NgxQRCodeModule } from 'ngx-qrcode2';
+import { AddUserComponent } from './components/add-user/add-user.component';
+import { UserDetailsComponent } from './components/user-details/user-details.component';
+import { UserListComponent } from './components/user-list/user-list.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent }
@@ -27,7 +30,10 @@ const appRoutes: Routes = [
     AppComponent,
     HomeComponent,
     GridUserComponent,
-    AddOrUpdateUserComponent
+    AddOrUpdateUserComponent,
+    AddUserComponent,
+    UserDetailsComponent,
+    UserListComponent
   ],
   imports: [
     BrowserModule,

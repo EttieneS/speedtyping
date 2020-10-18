@@ -1,0 +1,24 @@
+<div style="width: 400px; margin: auto;">
+  <div class="submit-form">
+    <div *ngIf="!submitted">
+      <div class="form-group">
+        <label for="name">Title</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          required
+          [(ngModel)]="user.name"
+          name="name"
+        />
+      </div>
+
+      <button (click)="saveUser()" class="btn btn-success">Submit</button>
+    </div>
+
+    <div *ngIf="submitted">
+      <h4>You submitted successfully!</h4>
+      <button class="btn btn-success" (click)="newTutorial()">Add</button>
+    </div>
+  </div>
+</div>

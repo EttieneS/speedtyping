@@ -1,19 +1,27 @@
-<a href="#" id="new-button">New</a>
+<a href="/users/add" id="new-button">New</a>
 <table>
 <thead>
     <tr>
         <th>ID</th>
         <th>Name</th>
+        <th>Surname</th>
+        <th>ID Number</th>
+        <th>Cell Number</th>
         <th>Score</th>
         <th>In Competition</th>
+        <th>Member since</th>
     </tr>
 </thead>
 <tbody>
     <tr *ngFor="let userInfo of userData">
         <td>{{ userInfo.id }}</td>
         <td>{{ userInfo.name }}</td>
+        <td>{{ userInfo.lastName }}</td>
+        <td>{{ userInfo.idNumber }}</td>
+        <td>{{ userInfo.cellNumber }}</td>
         <td>{{ userInfo.score }}</td>
         <td>{{ userInfo.competition }}</td>
+        <td>{{ userInfo.datecreated }}</td>
         <td>
             <a href="#" (click)="editRecord(this.userInfo)">Edit</a>
             <a href="#" (click)="deleteRecord(this.userInfo)">Delete</a>
@@ -23,6 +31,6 @@
 </tbody>
 </table>
 <div>
-  <h2>Affect the competitors chances of being thrown out</h2>
+  <h2>Affect the competitors chances of being thrown out :F </h2>
   <mat-slider min="1" max="100" step="1" value="1"></mat-slider>
 </div>

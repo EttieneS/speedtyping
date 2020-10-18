@@ -35,7 +35,11 @@ export class HomeComponent implements OnInit {
     return {
       id: undefined,
       name: '',
-      score: '',
+      lastName: '',
+      idNumber: '',
+      cellNumber: ''
+      // competition: '',
+      // datecreated: ''
     }
   }
 
@@ -66,12 +70,19 @@ export class HomeComponent implements OnInit {
       this.userService.update(user).subscribe(
         userRecord =>  this.userData.splice(updateIndex, 1, user)
       );
+      window.location.href = '';
     } else {
+      var randomRating = Math.floor(Math.random() * 501);
+
+      user['score'] = randomRating;
+      user['competition']  = true;
+
       this.userService.add(user).subscribe(
         userRecord => this.userData.push(user)
       );
     }
     this.currentUser = this.setInitialValuesForUserData();
+    window.location.href = '';
   };
 
   public eliminateClicked(record) {
