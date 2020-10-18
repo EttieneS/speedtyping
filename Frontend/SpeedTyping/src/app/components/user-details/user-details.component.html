@@ -1,1 +1,65 @@
-<p>user-details works!</p>
+<div style="width: 400px; margin: auto;">
+  <div *ngIf="currentUser" class="edit-form">
+    <h2>User Details</h2>
+    <form>
+      <div class="form-group">
+        <label for="name">Competitor Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          [(ngModel)]="currentUser.name"
+          name="name"
+        />
+      </div>
+      <div class="form-group">
+        <label for="lastname">Competitor last name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="lastname"
+          [(ngModel)]="currentUser.lastName"
+          name="lastname"
+        />
+      </div>
+
+      <!-- <div class="form-group">
+        <label><strong>Status:</strong></label>
+        {{ currentTutorial.published ? "Published" : "Pending" }}
+      </div> -->
+    </form>
+
+    <!-- <button
+      class="badge badge-primary mr-2"
+      *ngIf="currentTutorial.published"
+      (click)="updatePublished(false)"
+    >
+      UnPublish
+    </button> -->
+    <!-- <button
+      *ngIf="!currentTutorial.published"
+      class="badge badge-primary mr-2"
+      (click)="updatePublished(true)"
+    >
+      Publish
+    </button> -->
+
+    <button class="badge badge-danger mr-2" (click)="deleteUser()">
+      Delete
+    </button>
+
+    <button
+      type="submit"
+      class="badge badge-success"
+      (click)="updateUser()"
+    >
+      Update
+    </button>
+    <p>{{ message }}</p>
+  </div>
+
+  <div *ngIf="!currentUser">
+    <br />
+    <p>Cannot access this Tutorial...</p>
+  </div>
+</div>

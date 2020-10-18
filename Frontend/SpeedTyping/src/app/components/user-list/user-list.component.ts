@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../user.service';
+import { UserService } from '../../user.service';
 
 @Component({
   selector: 'app-user-list',
@@ -8,10 +8,11 @@ import { UserService } from '../user.service';
 })
 
 export class UserListComponent implements OnInit {
-  users: any;
-  currentUser = null;
-  currentIndex = -1;
-  name = '';
+  public users: any;
+  public currentUser = {}
+
+  public currentIndex = -1;
+  public name = '';
 
   constructor(private userService: UserService) { }
 
@@ -30,13 +31,13 @@ export class UserListComponent implements OnInit {
   }
 
   refreshList(): void {
-   this.retrieveTutorials();
+   this.retrieveUsers();
    this.currentUser = null;
    this.currentIndex = -1;
  }
 
- setActiveUser(tutorial, index): void {
-   this.currentUser = tutorial;
+ setActiveUser(user, index): void {
+   this.currentUser = user;
    this.currentIndex = index;
  }
 
@@ -62,5 +63,9 @@ export class UserListComponent implements OnInit {
        error => {
          console.log(error);
        });
+ }
+
+ deleteUser(id): void {
+   this.userService.delete(id);
  }
 }

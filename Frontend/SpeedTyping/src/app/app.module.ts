@@ -21,10 +21,16 @@ import { NgxQRCodeModule } from 'ngx-qrcode2';
 import { AddUserComponent } from './components/add-user/add-user.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { UserListComponent } from './components/user-list/user-list.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CommonModule } from "@angular/common";
 
-const appRoutes: Routes = [
-  { path: '', component: HomeComponent }
-]
+const routes: Routes = [
+  { path: '', redirectTo: 'users', pathMatch: 'full' },
+  { path: 'users', component: UserListComponent },
+  { path: 'users/:id', component: UserDetailsComponent },
+  { path: 'add', component: AddUserComponent }
+];
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,11 +45,13 @@ const appRoutes: Routes = [
     BrowserModule,
     BrowserAnimationsModule,
     MatSliderModule,
-    RouterModule.forRoot(appRoutes),
+    RouterModule.forRoot(routes),
     HttpClientModule,
     FormsModule,
     QRCodeModule,
-    NgxQRCodeModule
+    NgxQRCodeModule,
+    NgbModule,
+    CommonModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

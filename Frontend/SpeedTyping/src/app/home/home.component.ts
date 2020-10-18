@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
   elementType: 'url' | 'canvas' | 'img';
 
   constructor(private userService: UserService) {
-    userService.get().subscribe((data: any) => this.userData = data);
+    userService.getAll().subscribe((data: any) => this.userData = data);
     this.currentUser = this.setInitialValuesForUserData();
     this.myAngularxQrCode = {};
   }
@@ -56,7 +56,7 @@ export class HomeComponent implements OnInit {
 
   public deleteClicked(record) {
     const deleteIndex = _.findIndex(this.userData, {id: record.id});
-    this.userService.remove(record).subscribe(
+    this.userService.delete(record).subscribe(
       result => this.userData.splice(deleteIndex, 1)
     );
   }
@@ -67,7 +67,7 @@ export class HomeComponent implements OnInit {
 
     if (userWithId) {
       const updateIndex = _.findIndex(this.userData, {id: userWithId.id});
-      this.userService.update(user).subscribe(
+      this.userService.update(user['id'], user).subscribe(
         userRecord =>  this.userData.splice(updateIndex, 1, user)
       );
       window.location.href = '';
@@ -105,7 +105,7 @@ export class HomeComponent implements OnInit {
     var loserrecord = updateLoser(theLoser);
 
     const updateIndex = _.findIndex(loserrecord, {id: loserrecord['id']});
-    this.userService.update(loserrecord).subscribe(
+    this.userService.update(loserrecord['id'], loserrecord).subscribe(
       userRecord =>  this.userData.splice(updateIndex, 1, loserrecord)
     );
 

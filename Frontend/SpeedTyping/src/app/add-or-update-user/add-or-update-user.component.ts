@@ -16,67 +16,67 @@ export class AddOrUpdateUserComponent implements OnInit {
   public buttonText = 'Save';
   public userData: Array<any>;
 
-  constructor(
-    private userService: UserService,
-    private router: Router) {
-    this.clearUserInfo();
-    userService.get().subscribe((data: any) => this.userData = data);
-    this.currentUser = this.setInitialValuesForUserData();
-    private userService: UserService,
-  }
+  constructor()
+    //private userService: UserService,
+    //private router: Router) {
+    // this.clearUserInfo();
+
+    // this.currentUser = this.setInitialValuesForUserData();
+
+  {}
 
   ngOnInit(): void {
   }
 
-  private setInitialValuesForUserData(){
-    return {
-      id: undefined,
-      name: ''
-      // lastName: '',
-      // idNumber: '',
-      // cellNumber: ''
-      // competition: '',
-      // datecreated: ''
-    }
-  }
+  // private setInitialValuesForUserData(){
+  //   return {
+  //     id: undefined,
+  //     name: ''
+  //     // lastName: '',
+  //     // idNumber: '',
+  //     // cellNumber: ''
+  //     // competition: '',
+  //     // datecreated: ''
+  //   }
+  // }
 
-  private clearUserInfo = function() {
-    this.userInfo = {
-      id: undefined,
-      name: ''
-      // lastName: '',
-      // dateCreated: '',
-      // idNumber: '',
-      // cellnumber: ''
-    };
-  };
+  // private clearUserInfo = function() {
+  //   this.userInfo = {
+  //     id: undefined,
+  //     name: ''
+  //     // lastName: '',
+  //     // dateCreated: '',
+  //     // idNumber: '',
+  //     // cellnumber: ''
+  //   };
+  // };
 
-  public addOrUpdateUserRecord = function(event) {
-    this.userCreated.emit(this.userInfo);
-    this.clearUserInfo();
-  };
+  // public addOrUpdateUserRecord = function(event) {
+  //   this.userCreated.emit(this.userInfo);
+  //   this.clearUserInfo();
+  // };
 
-  public createOrUpdateUser = function(user: any) {
-    let userWithId;
-    userWithId = _.find(this.userData, (el => el.id === user.id));
-
-    if (userWithId) {
-      const updateIndex = _.findIndex(this.userData, {id: userWithId.id});
-      this.userService.update(user).subscribe(
-        userRecord =>  this.userData.splice(updateIndex, 1, user)
-      );
-      window.location.href = '';
-    } else {
-      var randomRating = Math.floor(Math.random() * 501);
-
-      user['score'] = randomRating;
-      user['competition']  = true;
-
-      this.userService.add(user).subscribe(
-        userRecord => this.userData.push(user)
-      );
-    }
-    this.currentUser = this.setInitialValuesForUserData();
-    window.location.href = '';
-  };
+  // public createOrUpdateUser = function(user: any) {
+  //   let userWithId;
+  //   userWithId = _.find(this.userData, (el => el.id === user.id));
+  //
+  //   if (userWithId) {
+  //     const updateIndex = _.findIndex(this.userData, {id: userWithId.id});
+  //     this.userService.update(user).subscribe(
+  //       userRecord =>  this.userData.splice(updateIndex, 1, user)
+  //     );
+  //     window.location.href = '';
+  //   } else {
+  //     var randomRating = Math.floor(Math.random() * 501);
+  //
+  //     user['score'] = randomRating;
+  //     user['competition']  = true;
+  //
+  //     this.userService.add(user).subscribe(
+  //       userRecord => this.userData.push(user)
+  //     );
+  //   }
+  //   this.currentUser = this.setInitialValuesForUserData();
+  //   window.location.href = '';
+  // };
 }

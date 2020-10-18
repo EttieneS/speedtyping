@@ -9,8 +9,11 @@ import { UserService }  from 'src/app/user.service';
 
 export class AddUserComponent implements OnInit {
   user = {
-    name: ''
+    name: '',
+    lastname: ''
   }
+  submitted = false;
+
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
@@ -18,7 +21,8 @@ export class AddUserComponent implements OnInit {
 
   saveUser(): void {
     const data = {
-      title: this.user.name
+      name: this.user.name,
+      lastname: this.user.lastname
     };
 
     this.userService.create(data)
@@ -35,7 +39,8 @@ export class AddUserComponent implements OnInit {
  newUser(): void {
    this.submitted = false;
    this.user = {
-     name: ''
+     name: '',
+     lastname: ''
    };
  }
 
