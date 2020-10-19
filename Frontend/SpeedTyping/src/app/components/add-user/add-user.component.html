@@ -1,7 +1,33 @@
 <div style="width: 400px; margin: auto;">
-  <div class="submit-form">
-    <div *ngIf="!submitted">
-      <div class="form-group">
+  <div class="mat-app-background basic-container">
+    <mat-form-field class="mx-auto" style="display: center;" appearance="fill">
+      <mat-label>Competitor Name</mat-label>
+      <input matInput [(ngModel)]="user.name">
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+      <mat-label>Select</mat-label>
+      <mat-select>
+        <mat-option value="option">Option</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <label for="datecreated">Choose a date</label>
+      <input [(ngModel)]="user.dateOfBirth" matInput [matDatepicker]="picker" id="user.dateOfBirth" name="user.dateOfBirth">
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-datepicker-toggle [for]="picker" ></mat-datepicker-toggle>
+    </mat-form-field>
+    <mat-divider></mat-divider>
+    <section>
+      <div class="button-row">
+         <button mat-raised-button color="primary" (click)="saveUser()">Add User</button>
+      </div>
+    </section>
+  </div>
+
+  <!-- <div class="submit-form">
+    <div *ngIf="!submitted"> -->
+      <!-- <div class="form-group">
         <label for="name">Name</label>
         <input
           type="text"
@@ -53,7 +79,7 @@
       </div>
     </div>
     <button (click)="saveUser()" class="btn btn-success">Submit</button>
-  </div>
+  </div> -->
 
   <div *ngIf="submitted">
     <h4>You submitted successfully!</h4>

@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { DateAdapter } from '@angular/material/core';
 import * as svg from 'save-svg-as-png';
+import {MatTooltipModule} from '@angular/material/tooltip'; //TODO: implement tooltip :)
 
 @Component({
   selector: 'app-user-details',
@@ -14,7 +15,7 @@ export class UserDetailsComponent implements OnInit {
   public currentUser = null;
   public message = '';
   public myAngularxQrCode = {};
-  
+
   constructor(
     private userService: UserService,
     private route: ActivatedRoute,
@@ -22,8 +23,6 @@ export class UserDetailsComponent implements OnInit {
     private dateAdapter: DateAdapter<Date>) {
       this.dateAdapter.setLocale('en-GB');
     }
-
-
 
   ngOnInit(): void {
     this.message = '';

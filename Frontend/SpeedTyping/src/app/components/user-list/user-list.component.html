@@ -22,43 +22,22 @@
   </div>
   <div class="col-md-6">
     <h4>Users List</h4>
-    <!-- <mat-row  *matRowDef="let row; columns: displayedColumns;" (click)="getRecord(row)"></mat-row> -->
-    <!-- <mat-table [dataSource]="users" class="mat-table"> -->
-    <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Surname</th>
-        <th>Cell Number</th>
-        <th>ID Number</th>
-        <th>Member since</th>
-        <th>Date of birth</th>
-        <th>Score</th>
-        <th>In Competition</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let user of users">
-        <td>{{ user.name }}</td>
-        <td>{{ user.lastName }}</td>
-        <td>{{ user.cellNumber }}</td>
-        <td>{{ user.idNumber }}</td>
-        <td>{{ user.dateCreated | date: 'dd MM, yyyy' }}</td>
-        <td>{{ user.dateOfBirth | date: 'yyyy, MM dd' }}</td>
-        <td>{{ user.score }}</td>
-        <td>{{ user.competition }}</td>
-        <td>
-            <a href="#" routerLink="/users/{{this.user.id}}">Edit</a>
-            <a href="#" (click)="deleteUser(this.user.id)">Delete</a>
-            <a href="#" (click)="eliminateUser(this.user)">Eliminate</a>
-        </td>
-      </tr>
-    </tbody>
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+    <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+        <td mat-cell *matCellDef="let row "> {{ row.id }} </td>
+      </ng-container>
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+        <td mat-cell *matCellDef="let row "> {{ row.name }} </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
-
-    <!-- <button class="m-3 btn btn-sm btn-danger" (click)="removeAllUsers()">
-      Remove All
-    </button> -->
   </div>
   <!-- <div class="col-md-6">
     <div *ngIf="currentUser">

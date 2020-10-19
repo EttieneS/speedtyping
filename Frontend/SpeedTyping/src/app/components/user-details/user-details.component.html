@@ -1,7 +1,13 @@
 <div style="width: 400px; margin: auto;">
   <div *ngIf="currentUser" class="edit-form">
     <h2>User Details</h2>
-    <form>
+    <div>
+      <!-- <mat-form-field appearance="fill">
+        <mat-label>Input</mat-label>
+        <input matInput>
+      </mat-form-field> -->
+    </div>
+    <!-- <form>
       <div class="form-group">
         <label for="name">Competitor Name</label>
         <input
@@ -59,27 +65,11 @@
         <label><strong>In competition:</strong></label>
         {{ currentUser.competition ? true : false }}
       </div>
-    </form>
+    </form> -->
     <div>
       <qrcode id="qrcode" [qrdata]="myAngularxQrCode" [width]="256" [errorCorrectionLevel]="'M'" [elementType]="'svg'"></qrcode>
       <a [href]="href" (click)="downloadImage()">Download QR Code</a>
     </div>
-
-    <!-- <button
-      class="badge badge-primary mr-2"
-      *ngIf="currentTutorial.published"
-      (click)="updatePublished(false)"
-    >
-      UnPublish
-    </button> -->
-    <!-- <button
-      *ngIf="!currentTutorial.published"
-      class="badge badge-primary mr-2"
-      (click)="updatePublished(true)"
-    >
-      Publish
-    </button> -->
-
     <button class="badge badge-danger mr-2" (click)="deleteUser()">
       Delete
     </button>

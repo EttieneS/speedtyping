@@ -1,6 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserService } from '../../user.service';
 import * as _ from 'lodash';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import { User } from '../../models/user.model';
 
 @Component({
   selector: 'app-user-list',
@@ -10,15 +14,33 @@ import * as _ from 'lodash';
 
 export class UserListComponent implements OnInit {
   public users: any;
-  public currentUser = {}
+  public currentUser = null;
 
   public currentIndex = -1;
   public name = '';
 
-  constructor(private userService: UserService) { }
+  displayedColumns = ["id", "name"];
+  dataSource: MatTableDataSource<User>;
 
+ @ViewChild(MatPaginator) paginator: MatPaginator;
+ @ViewChild(MatSort) sort: MatSort;
+
+
+
+constructor(private userService: UserService) {}
   ngOnInit(): void {
+    this.dataSource = new MatTableDataSource();
     this.retrieveUsers();
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
+
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 
   retrieveUsers(): void {
@@ -26,7 +48,7 @@ export class UserListComponent implements OnInit {
       .subscribe(
         data => {
           this.users = data;
-          console.log(data);
+          this.dataSource.data = data;
         }
       )
   }
@@ -70,61 +92,61 @@ export class UserListComponent implements OnInit {
    this.userService.delete(id);
  }
 
- public eliminateUser(record) {
-   var arrayLength = this.users.length;
-   var scoreDiff = 500;
-   var competitor = {};
+ // eliminateUser(record) {
+ //   var arrayLength = this.users.length;
+ //   var scoreDiff = 500;
+ //   var competitor = {};
+ //
+ //   for (var i = 0; i < arrayLength; i++){
+ //     if (!(this.users[i].id == record['id'])){
+ //       var competitorDiff = difference(record.score, this.users[i].score);
+ //
+ //       if (scoreDiff > competitorDiff){
+ //         scoreDiff = competitorDiff;
+ //         competitor = this.users[i];
+ //       }
+ //     }
+ //   }
 
-   for (var i = 0; i < arrayLength; i++){
-     if (!(this.users[i].id == record['id'])){
-       var competitorDiff = difference(record.score, this.users[i].score);
+   // var theLoser = loser(record, competitor);
+   // var loserrecord = updateLoser(theLoser);
 
-       if (scoreDiff > competitorDiff){
-         scoreDiff = competitorDiff;
-         competitor = this.users[i];
-       }
-     }
-   }
+   // const updateIndex = _.findIndex(loserrecord, {id: loserrecord['id']});
+   // this.userService.update(loserrecord['id'], loserrecord).subscribe(
+   //   userRecord =>  this.users.splice(updateIndex, 1, loserrecord)
+   // );
 
-   var theLoser = loser(record, competitor);
-   var loserrecord = updateLoser(theLoser);
+   // function updateLoser(record){
+   //   var updateRecord = {
+   //     id: record['id'],
+   //     name: record['name'],
+   //     lastName: record['lastName'],
+   //     idNumber: record['idNumber'],
+   //     cellNumber: record['cellNumber'],
+   //     dateCreated: record['dateCreated'],
+   //     dateOfBirth: record['dateOfBirth'],
+   //     score: record['score'],
+   //     competition: false
+   //   }
+   // }
+   //
+   // function loser(a, b){
+   //   var bayes = (Math.random() * 101);
+   //
+   //   if (bayes >= 50){
+   //     return a;
+   //   } else {
+   //     return b;
+   //   }
+   // }
+   //
+   // function difference(a , b){
+   //   var diff = a - b;
+   //   diff = Math.abs(diff);
+   //
+   //   return diff;
+   // }
 
-   const updateIndex = _.findIndex(loserrecord, {id: loserrecord['id']});
-   this.userService.update(loserrecord['id'], loserrecord).subscribe(
-     userRecord =>  this.users.splice(updateIndex, 1, loserrecord)
-   );
-
-   function updateLoser(record){
-     var updateRecord = {
-       id: record['id'],
-       name: record['name'],
-       lastName: record['lastName'],
-       idNumber: record['idNumber'],
-       cellNumber: record['cellNumber'],
-       dateCreated: record['dateCreated'],
-       dateOfBirth: record['dateOfBirth'],
-       score: record['score'],
-       competition: false
-     }
-
-     return updateRecord;
-   }
-
-   function loser(a, b){
-     var bayes = (Math.random() * 101);
-
-     if (bayes >= 50){
-       return a;
-     } else {
-       return b;
-     }
-   }
-
-   function difference(a , b){
-     var diff = a - b;
-     diff = Math.abs(diff);
-
-     return diff;
-   }
- }
+   //return updateRecord;
+ // }
 }
