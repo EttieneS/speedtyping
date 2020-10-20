@@ -22,11 +22,7 @@ export class AddUserComponent {
   }
   submitted = false;
 
-  constructor(private userService: UserService,
-    // private dateAdapter: DateAdapter<Date>
-  ) {
-    //this.dateAdapter.setLocale('en-GB');
-  }
+  constructor(private userService: UserService) {}
 
   ngOnInit(): void {}
 

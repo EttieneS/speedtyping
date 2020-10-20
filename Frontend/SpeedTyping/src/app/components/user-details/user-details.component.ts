@@ -4,7 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { DateAdapter } from '@angular/material/core';
 import * as svg from 'save-svg-as-png';
-import {MatTooltipModule} from '@angular/material/tooltip'; //TODO: implement tooltip :)
+import { MatTooltipModule } from '@angular/material/tooltip'; //TODO: implement tooltip :)
+import * as moment from 'moment-timezone';
 
 @Component({
   selector: 'app-user-details',
@@ -43,6 +44,7 @@ export class UserDetailsComponent implements OnInit {
   }
 
   updateUser(): void {
+    this.currentUser.dateOfBirth = moment(this.currentUser.dateOfBirth).tz("Africa/Johannesburg").format('yyyy-MM-DD')
     this.userService.update(this.currentUser.id, this.currentUser)
       .subscribe(
         response => {

@@ -22,9 +22,10 @@
   </div>
   <div class="col-md-6">
     <h4>Users List</h4>
-    <mat-form-field>
+    <!-- TODO:  sort filter mat-table-->
+    <!-- <mat-form-field>
       <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-    </mat-form-field>
+    </mat-form-field> -->
     <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource" matSort>
       <ng-container matColumnDef="id">
@@ -75,18 +76,13 @@
           <button mat-raised-button (click)="deleteUser(row.id)" color="warn">Delete</button>
         </td>
       </ng-container>
-      <!-- <ng-container matColumnDef="delete">
-        <th mat-header-cell  *matHeaderCellDef ></th>
-        <td mat-cell *matCellDef="let row" >
-          <button mat-raised-button color="warn" (click)="deleteUser()"">Delete<button>
-        </td>
-      </ng-container> -->
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"><button mat-raised-button color="primary" (click)="saveUser()">Add User</button></tr>
     </table>
   </div>
   <!-- <div class="col-md-6">
-    <div *ngIf="currentUser">
+  <!-- TODO: ?? maybe -->
+  <!-- <div *ngIf="currentUser">
       <h4>User</h4>
       <div>
         <label><strong>Name:</strong></label> {{ currentUser.name }}

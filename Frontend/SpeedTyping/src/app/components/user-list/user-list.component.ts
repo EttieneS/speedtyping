@@ -6,6 +6,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { User } from '../../models/user.model';
 import { DatePipe } from '@angular/common';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-list',
@@ -30,7 +31,12 @@ export class UserListComponent implements OnInit {
 
 
 
-constructor(private userService: UserService) {}
+constructor(
+  private userService: UserService,
+  private route: ActivatedRoute,
+  private router: Router
+) {}
+
   ngOnInit(): void {
     this.dataSource = new MatTableDataSource();
     this.retrieveUsers();
@@ -94,6 +100,10 @@ constructor(private userService: UserService) {}
  deleteUser(id): void {
    this.userService.delete(id);
    window.location.reload();
+ }
+
+ editUser(id): void {
+   this.router.navigateByUrl('users/' + id);
  }
 
  // eliminateUser(record) {

@@ -1,12 +1,55 @@
 <div style="width: 400px; margin: auto;">
   <div *ngIf="currentUser" class="edit-form">
     <h2>User Details</h2>
-    <div>
-      <!-- <mat-form-field appearance="fill">
-        <mat-label>Input</mat-label>
-        <input matInput>
-      </mat-form-field> -->
-    </div>
+    <form>
+      <div class="mat-app-background basic-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Competitor Name</mat-label>
+          <input matInput
+            type="text"
+            [(ngModel)]="currentUser.name"
+            name="name">
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+          <mat-label>Competitor Surame</mat-label>
+          <input matInput
+            type="text"
+            [(ngModel)]="currentUser.lastName"
+            name="lastname">
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+          <mat-label>Cell Number</mat-label>
+          <input matInput
+            type="text"
+            [(ngModel)]="currentUser.cellNumber"
+            name="cellnumber">
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+          <mat-label>ID Number</mat-label>
+          <input matInput
+            type="text"
+            [(ngModel)]="currentUser.idNumber"
+            name="cellnumber">
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+          <label for="dateOfBirth">Choose a date</label>
+          <input [(ngModel)]="currentUser.dateOfBirth" matInput [matDatepicker]="picker" id="currentUser.dateOfBirth" name="currentUser.dateOfBirth">
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-datepicker-toggle [for]="picker" ></mat-datepicker-toggle>
+        </mat-form-field>
+        <br>
+        <mat-divider></mat-divider>
+        <section>
+          <div class="button-row">
+            <button mat-raised-button color="primary" (click)="updateUser()">Update Details</button>
+          </div>
+        </section>
+      </div>
+    </form>
     <!-- <form>
       <div class="form-group">
         <label for="name">Competitor Name</label>
