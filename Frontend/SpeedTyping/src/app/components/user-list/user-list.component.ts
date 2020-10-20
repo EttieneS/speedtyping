@@ -23,7 +23,7 @@ export class UserListComponent implements OnInit {
 
   displayedColumns = ["id", "name", "lastName", "cellNumber",
     "idNumber", "dateCreated", "dateOfBirth", "score",
-    "competition", "edit", "delete"];
+    "competition", "edit", "delete", "eliminate"];
   dataSource: MatTableDataSource<User>;
 
  @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -105,6 +105,68 @@ constructor(
  editUser(id): void {
    this.router.navigateByUrl('users/' + id);
  }
+
+ eliminatUser(record): void {
+   var arrayLength = this.users.length;
+   var scoreDiff = 500;
+   var competitor = {
+     id: '',
+     name: ''
+   };
+
+   for (var i = 0; i < arrayLength; i++){
+     if (!(this.users[i].id == record['id'])){
+       var competitorDiff = difference(record.score, this.users[i].score);
+
+       if (scoreDiff > competitorDiff){
+         scoreDiff = competitorDiff;
+         competitor = this.users[i];
+       }
+     }
+   }
+
+   competitor = loser(record, competitor);
+   competitor = updateLoser(competitor);
+
+   alert("theloser is: " + competitor.name);
+
+   function loser(a, b){
+     var bayes = (Math.random() * 101);
+
+     if (bayes >= 50){
+       return a;
+     } else {
+       return b;
+     }
+   }
+
+   function difference(a , b){
+     var diff = a - b;
+     diff = Math.abs(diff);
+
+     return diff;
+   }
+
+   function updateLoser(record){
+     var updateRecord = {
+       id: record['id'],
+       name: record['name'],
+       lastName: record['lastName'],
+       idNumber: record['idNumber'],
+       cellNumber: record['cellNumber'],
+       dateCreated: record['dateCreated'],
+       dateOfBirth: record['dateOfBirth'],
+       score: record['score'],
+       competition: false
+     }
+
+     return updateRecord;
+   }
+
+   return this.userService.update(competitor.id, competitor);
+ }
+
+
 
  // eliminateUser(record) {
  //   var arrayLength = this.users.length;

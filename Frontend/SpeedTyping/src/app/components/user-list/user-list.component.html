@@ -76,6 +76,12 @@
           <button mat-raised-button (click)="deleteUser(row.id)" color="warn">Delete</button>
         </td>
       </ng-container>
+      <ng-container matColumnDef="eliminate">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+        <td mat-cell *matCellDef="let row ">
+          <button mat-raised-button (click)="eliminatUser(row)" color="warn">Eliminate</button>
+        </td>
+      </ng-container>
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"><button mat-raised-button color="primary" (click)="saveUser()">Add User</button></tr>
     </table>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService }  from 'src/app/user.service';
 import { DateAdapter } from '@angular/material/core';
 import * as moment from 'moment-timezone';
+import { NgForm, Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-add-user',
@@ -21,21 +22,31 @@ export class AddUserComponent {
     competition: ''
   }
   submitted = false;
+  public userdetailsForm: FormGroup;
 
-  constructor(private userService: UserService) {}
 
-  ngOnInit(): void {}
+  constructor(
+    private userService: UserService
+  ) {}
 
-  saveUser(): void {
+  ngOnInit(): void {
+    this.userdetailsForm = new FormGroup({
+      name: new FormControl('', [Validators.required, Validators.maxLength(60)]),
+      lastName: new FormControl('', [Validators.required, Validators.maxLength(60)])
+      //lastName: new FormControl('', [Validators.required, Validators.maxLength(60)])
+    });
+  }
+
+  saveUser(user): void {
     const data = {
-      name: this.user.name,
-      lastName: this.user.lastName,
-      cellNumber: this.user.cellNumber,
-      dateCreated: moment().tz("Africa/Johannesburg").format('yyyy-MM-DD'),
-      dateOfBirth: moment(this.user.dateOfBirth).tz("Africa/Johannesburg").format('yyyy-MM-DD'),
-      competition: true,
-      score: Math.floor(Math.random() * 501),
-      idNumber: this.user.idNumber
+      lastName: user.lastName,
+      //cellNumber: user.cellNumber,
+      // idNumber: this.user.idNumber,
+      // dateCreated: moment().tz("Africa/Johannesburg").format('yyyy-MM-DD'),
+      // dateOfBirth: moment(this.user.dateOfBirth).tz("Africa/Johannesburg").format('yyyy-MM-DD'),
+      // competition: true,
+      // score: Math.floor(Math.random() * 501),
+      name: user.name
     }
 
     this.userService.create(data)
@@ -48,6 +59,10 @@ export class AddUserComponent {
        error => {
          console.log(error);
        });
+  }
+
+  public hasError = (controlName: string, errorName: string) =>{
+    return this.userdetailsForm.controls[controlName].hasError(errorName);
   }
 
   newUser(): void {

@@ -26,6 +26,7 @@ import { UserListComponent } from './components/user-list/user-list.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from "@angular/common";
 import { FormsComponentComponent } from './components/forms-component/forms-component.component';
+import { ReactiveFormsModule } from '@angular/forms';
 import { DynamicTableModule } from 'material-dynamic-table';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatButtonModule } from '@angular/material/button';
@@ -88,7 +89,8 @@ const routes: Routes = [
     MatInputModule,
     MatTooltipModule,
     MatSelectModule,
-    MatDividerModule
+    MatDividerModule,
+    ReactiveFormsModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]
