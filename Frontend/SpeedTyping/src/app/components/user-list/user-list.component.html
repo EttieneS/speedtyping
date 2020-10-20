@@ -35,8 +35,54 @@
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
         <td mat-cell *matCellDef="let row "> {{ row.name }} </td>
       </ng-container>
+      <ng-container matColumnDef="lastName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Last Name </th>
+        <td mat-cell *matCellDef="let row "> {{ row.lastName }} </td>
+      </ng-container>
+      <ng-container matColumnDef="cellNumber">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Cell </th>
+        <td mat-cell *matCellDef="let row "> {{ row.cellNumber }} </td>
+      </ng-container>
+      <ng-container matColumnDef="idNumber">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Id Numb </th>
+        <td mat-cell *matCellDef="let row "> {{ row.idNumber }} </td>
+      </ng-container>
+      <ng-container matColumnDef="dateOfBirth">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Birth date </th>
+        <td mat-cell *matCellDef="let row "> {{ row.dateOfBirth | date: 'd-MM-yyyy'}} </td>
+      </ng-container>
+      <ng-container matColumnDef="dateCreated">
+        <td mat-cell *matCellDef="let row "> {{ row.dateCreated | date: 'd-MM-yyyy'}} </td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Joined On </th>
+      </ng-container>
+      <ng-container matColumnDef="score">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Rating </th>
+        <td mat-cell *matCellDef="let row "> {{ row.score }} </td>
+      </ng-container>
+      <ng-container matColumnDef="competition">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Competition </th>
+        <td mat-cell *matCellDef="let row "> {{ row.competition }} </td>
+      </ng-container>
+      <ng-container matColumnDef="edit">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+        <td mat-cell *matCellDef="let row ">
+          <button mat-raised-button (click)="editUser(row.id)" color="primary">Edit</button>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="delete">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+        <td mat-cell *matCellDef="let row ">
+          <button mat-raised-button (click)="deleteUser(row.id)" color="warn">Delete</button>
+        </td>
+      </ng-container>
+      <!-- <ng-container matColumnDef="delete">
+        <th mat-header-cell  *matHeaderCellDef ></th>
+        <td mat-cell *matCellDef="let row" >
+          <button mat-raised-button color="warn" (click)="deleteUser()"">Delete<button>
+        </td>
+      </ng-container> -->
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"><button mat-raised-button color="primary" (click)="saveUser()">Add User</button></tr>
     </table>
   </div>
   <!-- <div class="col-md-6">

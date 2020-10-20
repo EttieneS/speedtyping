@@ -5,6 +5,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { User } from '../../models/user.model';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-user-list',
@@ -19,7 +20,9 @@ export class UserListComponent implements OnInit {
   public currentIndex = -1;
   public name = '';
 
-  displayedColumns = ["id", "name"];
+  displayedColumns = ["id", "name", "lastName", "cellNumber",
+    "idNumber", "dateCreated", "dateOfBirth", "score",
+    "competition", "edit", "delete"];
   dataSource: MatTableDataSource<User>;
 
  @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -90,6 +93,7 @@ constructor(private userService: UserService) {}
 
  deleteUser(id): void {
    this.userService.delete(id);
+   window.location.reload();
  }
 
  // eliminateUser(record) {

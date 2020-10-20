@@ -86,12 +86,12 @@ namespace SpeedTyping.Controllers
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetUser", new { 
-                id = user.Id, 
+                /*id = user.Id, 
                 name = user.Name, 
                 lastname = user.LastName,
-                cellnumber = user.CellNumber //,
-                //score = user.Score, 
-                //competition = user.Competition 
+                cellnumber = user.CellNumber,
+                score = user.Score, 
+                competition = user.Competition */
                 }, user);
         }
 

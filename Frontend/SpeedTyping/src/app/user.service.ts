@@ -53,9 +53,7 @@ export class UserService {
  }
 
  delete(record) {
-  this.http.delete(this.accessPointUrl + '/' + record, {headers: this.headers}).subscribe(data => {
-    console.log(data);
-  });
+  this.http.delete(this.accessPointUrl + '/' + record, {headers: this.headers}).subscribe(data => {});
 
   return record;
  }

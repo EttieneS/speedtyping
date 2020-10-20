@@ -23,8 +23,9 @@ export class AddUserComponent {
   submitted = false;
 
   constructor(private userService: UserService,
-    private dateAdapter: DateAdapter<Date>) {
-    this.dateAdapter.setLocale('en-GB'); //dd/MM/yyyy
+    // private dateAdapter: DateAdapter<Date>
+  ) {
+    //this.dateAdapter.setLocale('en-GB');
   }
 
   ngOnInit(): void {}
@@ -34,10 +35,11 @@ export class AddUserComponent {
       name: this.user.name,
       lastName: this.user.lastName,
       cellNumber: this.user.cellNumber,
-      idNumber: this.user.idNumber,
       dateCreated: moment().tz("Africa/Johannesburg").format('yyyy-MM-DD'),
       dateOfBirth: moment(this.user.dateOfBirth).tz("Africa/Johannesburg").format('yyyy-MM-DD'),
-      competition: true
+      competition: true,
+      score: Math.floor(Math.random() * 501),
+      idNumber: this.user.idNumber
     }
 
     this.userService.create(data)
