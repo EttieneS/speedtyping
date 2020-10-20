@@ -17,34 +17,40 @@
         <mat-label>Last Name</mat-label>
         <input matInput
           type="text"
-          formControlName="lastName">
+          formControlName="lastName"
+          name="lastName">
+          <mat-hint align="end">Not more then 60 characters long.</mat-hint>
+          <mat-error *ngIf="hasError('lastName', 'required')">Last name is required</mat-error>
+          <mat-error *ngIf="hasError('lastName', 'maxlength')">You have more than 60 characters</mat-error>
       </mat-form-field>
-      <!--
-      <br>
       <mat-form-field appearance="fill">
         <mat-label>Cell Number</mat-label>
         <input matInput
           type="text"
-          [(ngModel)]="user.cellNumber"
-          name="cellnumber"
-          >
+          formControlName="cellNumber">
+          <mat-hint align="end">Not more then 10 characters long.</mat-hint>
+          <mat-error *ngIf="hasError('cellNumber', 'maxlength')">You have more than 10 characters, not a valid phone number.</mat-error>
+          <mat-error *ngIf="hasError('cellNumber', 'pattern')">Phone number is invalid</mat-error>
       </mat-form-field>
       <br>
       <mat-form-field appearance="fill">
         <mat-label>Id Number</mat-label>
         <input matInput
           type="text"
-          [(ngModel)]="user.idNumber"
-          name="idNumber"
-          >
+          formControlName="idNumber"
+          name="idNumber">
+          <mat-error *ngIf="hasError('idNumber', 'pattern')">ID number is invalid</mat-error>
       </mat-form-field>
       <br>
       <mat-form-field appearance="fill">
-        <label for="dateOfBirth">Choose a date</label>
-        <input [(ngModel)]="user.dateOfBirth" matInput [matDatepicker]="picker" id="user.dateOfBirth" name="user.dateOfBirth">
+        <label for="dateOfBirth">Date of Birth</label>
+        <input
+          formControlName="dateOfBirth"
+          matInput [matDatepicker]="picker"
+          name="dateOfBirth">
         <mat-datepicker #picker></mat-datepicker>
         <mat-datepicker-toggle [for]="picker" ></mat-datepicker-toggle>
-      </mat-form-field> -->
+      </mat-form-field>
       <mat-divider></mat-divider>
       <section>
         <div class="button-row">
