@@ -29,8 +29,6 @@ export class UserListComponent implements OnInit {
  @ViewChild(MatPaginator) paginator: MatPaginator;
  @ViewChild(MatSort) sort: MatSort;
 
-
-
 constructor(
   private userService: UserService,
   private route: ActivatedRoute,
