@@ -1,0 +1,105 @@
+<div class="list row">
+  <div class="col-md-8">
+    <div class="input-group mb-3">
+      <input
+        id="name"
+        name="name"
+        type="text"
+        class="form-control"
+        placeholder="Search by title"
+        [(ngModel)]="name"
+      />
+      <div class="input-group-append">
+        <button
+          class="btn btn-outline-secondary"
+          type="button"
+          (click)="searchName()"
+        >
+          Search
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <h4>Users List</h4>
+    <!-- TODO:  sort filter mat-table-->
+    <!-- <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field> -->
+    <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+        <td mat-cell *matCellDef="let row "> {{ row.id }} </td>
+      </ng-container>
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+        <td mat-cell *matCellDef="let row "> {{ row.name }} </td>
+      </ng-container>
+      <ng-container matColumnDef="lastName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Last Name </th>
+        <td mat-cell *matCellDef="let row "> {{ row.lastName }} </td>
+      </ng-container>
+      <ng-container matColumnDef="cellNumber">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Cell </th>
+        <td mat-cell *matCellDef="let row "> {{ row.cellNumber }} </td>
+      </ng-container>
+      <ng-container matColumnDef="idNumber">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Id Numb </th>
+        <td mat-cell *matCellDef="let row "> {{ row.idNumber }} </td>
+      </ng-container>
+      <ng-container matColumnDef="dateOfBirth">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Birth date </th>
+        <td mat-cell *matCellDef="let row "> {{ row.dateOfBirth | date: 'd-MM-yyyy'}} </td>
+      </ng-container>
+      <ng-container matColumnDef="dateCreated">
+        <td mat-cell *matCellDef="let row "> {{ row.dateCreated | date: 'd-MM-yyyy'}} </td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Joined On </th>
+      </ng-container>
+      <ng-container matColumnDef="score">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Rating </th>
+        <td mat-cell *matCellDef="let row "> {{ row.score }} </td>
+      </ng-container>
+      <ng-container matColumnDef="competition">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Competition </th>
+        <td mat-cell *matCellDef="let row "> {{ row.competition }} </td>
+      </ng-container>
+      <ng-container matColumnDef="edit">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+        <td mat-cell *matCellDef="let row ">
+          <button mat-raised-button (click)="editUser(row.id)" color="primary">Edit</button>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="delete">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+        <td mat-cell *matCellDef="let row ">
+          <button mat-raised-button (click)="deleteUser(row.id)" color="warn">Delete</button>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="eliminate">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+        <td mat-cell *matCellDef="let row ">
+          <button mat-raised-button (click)="eliminatUser(row)" color="warn">Eliminate</button>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"><button mat-raised-button color="primary" (click)="saveUser()">Add User</button></tr>
+    </table>
+  </div>
+  <!-- <div class="col-md-6">
+  <!-- TODO: ?? maybe -->
+  <!-- <div *ngIf="currentUser">
+      <h4>User</h4>
+      <div>
+        <label><strong>Name:</strong></label> {{ currentUser.name }}
+      </div>
+      <a class="badge badge-warning" routerLink="/users/{{ currentUser.id }}">
+        Edit
+      </a>
+    </div>
+    <div *ngIf="!currentUser">
+      <br />
+      <p>Please click on a Tutorial...</p>
+    </div>
+  </div> -->
+</div>

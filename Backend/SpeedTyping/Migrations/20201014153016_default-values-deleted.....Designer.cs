@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SpeedTyping.Data;
 
 namespace SpeedTyping.Migrations
 {
     [DbContext(typeof(SpeedTypingContext))]
-    partial class SpeedTypingContextModelSnapshot : ModelSnapshot
+    [Migration("20201014153016_default-values-deleted....")]
+    partial class defaultvaluesdeleted
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -26,8 +28,8 @@ namespace SpeedTyping.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("CellNumber")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("CellNumber")
+                        .HasColumnType("int");
 
                     b.Property<bool>("Competition")
                         .HasColumnType("bit");
@@ -35,11 +37,8 @@ namespace SpeedTyping.Migrations
                     b.Property<DateTime>("DateCreated")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("DateOfBirth")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("IdNumber")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("IdNumber")
+                        .HasColumnType("int");
 
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");

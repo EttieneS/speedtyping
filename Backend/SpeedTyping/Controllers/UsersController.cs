@@ -31,7 +31,7 @@ namespace SpeedTyping.Controllers
         }
 
         // GET: api/Users/5
-        [HttpGet("{id}")]
+        [HttpGet("{id?}")]
         public async Task<ActionResult<User>> GetUser(int id)
         {
             var user = await _context.User.FindAsync(id);
@@ -86,9 +86,13 @@ namespace SpeedTyping.Controllers
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetUser", new { 
-                id = user.Id, 
+                /*id = user.Id, 
+                name = user.Name, 
+                lastname = user.LastName,
+                cellnumber = user.CellNumber,
                 score = user.Score, 
-                competition = user.Competition }, user);
+                competition = user.Competition */
+                }, user);
         }
 
         // DELETE: api/Users/5

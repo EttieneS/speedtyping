@@ -10,8 +10,20 @@
     </div>
     <div class="form-row">
       <div class="form-group">
-        <label for="score-input">Player typing speed:</label>
-        <input type="number" id="score-input" name="score-input"[(ngModel)]="userInfo.score" class="form-control" />
+        <label for="lastname-input">Player Surame:</label>
+        <input type="text" id="lastname-input" name="lastname-input"[(ngModel)]="userInfo.lastName" class="form-control" />
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="idnumber-input">ID Number:</label>
+        <input type="number" id="idnumber-input" name="idnumber-input"[(ngModel)]="userInfo.idNumber" class="form-control" />
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="cellnumber-input">Cellphone Number:</label>
+        <input type="number" id="cellnumber-input" name="cellnumber-input"[(ngModel)]="userInfo.cellNumber" class="form-control" />
       </div>
     </div>
     <div class="form-row">
@@ -23,6 +35,7 @@
         </select>
       </div>
     </div>
-    <button type="button" class="btn btn-primary" (click)="addOrUpdateUserRecord($event);">Save</button>
+    <!-- <button type="button" class="btn btn-primary" (click)="addOrUpdateUserRecord($event);">Save</button> -->
+    <!-- <button type="button" class="btn btn-primary" (click)="createOrUpdateUser($event)">Save</button> -->
   </form>
 </div>

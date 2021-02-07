@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-grid-user',
@@ -9,6 +10,7 @@ export class GridUserComponent implements OnInit {
   @Output() recordDeleted = new EventEmitter<any>();
   @Output() newClicked = new EventEmitter<any>();
   @Output() editClicked = new EventEmitter<any>();
+  @Output() userEliminated = new EventEmitter<any>();
   @Input() userData: Array<any>;
 
   public deleteRecord(record) {
@@ -22,6 +24,10 @@ export class GridUserComponent implements OnInit {
 
   public newRecord() {
     this.newClicked.emit();
+  }
+
+  public eliminateUser(record) {
+    this.userEliminated.emit(record);
   }
 
   constructor() { }
